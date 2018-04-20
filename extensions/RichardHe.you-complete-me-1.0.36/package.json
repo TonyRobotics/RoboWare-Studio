@@ -1,0 +1,101 @@
+{
+	"name": "you-complete-me",
+	"description": "YouCompleteMe for vscode",
+	"author": "Richard He",
+	"license": "MIT",
+	"version": "1.0.36",
+	"publisher": "RichardHe",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/richard1122/vscode-youcompleteme"
+	},
+	"engines": {
+		"vscode": "^1.8.0"
+	},
+	"categories": [
+		"Languages"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Ycmd path",
+			"properties": {
+				"ycmd.enabled_languages": {
+					"type": "array",
+					"default": [
+						"cpp",
+						"c"
+					]
+				},
+				"ycmd.confirm_extra_conf": {
+					"type": "boolean",
+					"default": true,
+					"description": "When this option is set to 1 YCM will ask once per .ycm_extra_conf.py file if it is safe to be loaded. This is to prevent execution of malicious code from a .ycm_extra_conf.py file you didn't write."
+				},
+				"ycmd.python": {
+					"type": "string",
+					"default": "python",
+					"description": "python execuable path"
+				},
+				"ycmd.debug": {
+					"type": "boolean",
+					"default": false,
+					"description": "show debug messages"
+				},
+				"ycmd.use_imprecise_get_type": {
+					"type": "boolean",
+					"default": false,
+					"description": "use GetTypeImprecise subcommand instand of GetType, please see https://github.com/Valloric/ycmd/pull/609"
+				},
+				"ycmd.lint_run": {
+					"type": "string",
+					"default": "onCall",
+					"enum": [
+						"onCall",
+						"onSave"
+					]
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "ycm.lint",
+				"title": "Ycm: Lint"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "ycm.lint",
+				"key": "Alt+l"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"lint": "tslint -c ../tslint.json './src/*' && tslint -c ../tslint.json '../server/src/*'",
+		"test": "node out/test/index",
+		"typings": "typings install"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.32",
+		"@types/node": "^7.0.22",
+		"tslint": "^5.3.2",
+		"typescript": "^2.2.1",
+		"typings": "^2.1.0",
+		"vscode": "^1.0.3"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^3.2.1"
+	},
+	"__metadata": {
+		"id": "86a1c659-87f3-4564-82ae-b1a62a60efc8",
+		"publisherId": "cc933206-6637-4c68-a4f8-7350aaf6a072",
+		"publisherDisplayName": "RichardHe"
+	}
+}

@@ -1,0 +1,162 @@
+{
+	"#if": {
+		"prefix": "#i",
+		"body": "#if ${1:CONDITION}\n\t${2:/* code for True */}$0\n#endif\n",
+		"description": "#if … #endif"
+	},
+	"#ifdef": {
+		"prefix": "#ifd",
+		"body": "#ifdef ${1:SYMBOL}\n\t${2:/* code for Defined */}$0\n#endif\n",
+		"description": "#ifdef … #endif"
+	},
+	"#ifndef": {
+		"prefix": "#ifn",
+		"body": "#ifndef ${1:SYMBOL}\n\t${2:/* code for Undefined */}$0\n#endif\n",
+		"description": "#ifndef … #endif"
+	},
+	"#else": {
+		"prefix": "#e",
+		"body": "#else\n\t${1:/* code for False */}",
+		"description": "#else"
+	},
+	"#define": {
+		"prefix": "#def",
+		"body": "#define ${1:SYMBOL} ${2:value}\n",
+		"description": "#define …"
+	},
+	"#undef": {
+		"prefix": "#und",
+		"body": "#undef ${1:SYMBOL}\n",
+		"description": "#undef …"
+	},
+	"inc": {
+		"prefix": "inc",
+		"body": "#include \"${1:filename}.h\"\n",
+		"description": "#include \"…\""
+	},
+	"Inc": {
+		"prefix": "Inc",
+		"body": "#include <${1:filename}>\n",
+		"description": "#include <…>"
+	},
+	"typedef": {
+		"prefix": "type",
+		"body": "typedef ${1:int} ${2:CUSTOM_TYPE};\n",
+		"description": "Typedef"
+	},
+	"enum": {
+		"prefix": "enum",
+		"body": "enum ${1:name}\n{\n\t${2:value1},\n\t${3:value2}$0\n};\n",
+		"description": "Enumeration"
+	},
+	"union": {
+		"prefix": "uni",
+		"body": "union ${1:name}\n{\n\t${2:int} ${3:value};$0\n};\n",
+		"description": "Union"
+	},
+	"struct": {
+		"prefix": "stru",
+		"body": "struct ${1:name}\n{\n\t${2:int} ${3:value};$0\n};\n",
+		"description": "Struct"
+	},
+	"class": {
+		"prefix": "class",
+		"body": "class ${1:name}\n{\npublic:\n\t${1:name}(${2:arguments});\n\t${3:virtual }~${1:name}();\n\nprivate:\n\t${4:/* data */}$0\n};\n",
+		"description": "Class"
+	},
+	"namespace": {
+		"prefix": "name",
+		"body": "namespace ${1:name}\n{\n\t${2:/* code */}$0\n}\n",
+		"description": "Namespace"
+	},
+	"main": {
+		"prefix": "main",
+		"body": "int main(int argc, char *argv[])\n{\n\t${1:/* code for main function */}$0\n\treturn 0;\n}",
+		"description": "main()"
+	},
+	"if": {
+		"prefix": "if",
+		"body": "if (${1:condition})\n{\n\t${2:/* code for True */}$0\n}\n",
+		"description": "If Condition"
+	},
+	"else": {
+		"prefix": "el",
+		"body": "else\n{\n\t${1:/* code for False */}$0\n}\n",
+		"description": "Else"
+	},
+	"else if": {
+		"prefix": "ei",
+		"body": "else if (${1:condition})\n{\n\t${2:/* code for True */}$0\n}\n",
+		"description": "Else If Condition"
+	},
+	"for": {
+		"prefix": "for",
+		"body": "for (size_t ${1:i} = ${2:0}; ${1:i} < ${3:count}; ${1:i}${4:++})\n{\n\t${5:/* code for loop body */}$0\n}\n",
+		"description": "For Loop"
+	},
+	"do": {
+		"prefix": "do",
+		"body": "do\n{\n\t${2:/* code for loop body */}$0\n}\nwhile (${1:condition});\n",
+		"description": "Do While Loop"
+	},
+	"while": {
+		"prefix": "while",
+		"body": "while (${1:condition})\n{\n\t${2:/* code for loop body */}$0\n}\n",
+		"description": "While Loop"
+	},
+	"switch": {
+		"prefix": "swi",
+		"body": "switch (${1:expression})\n{\n\tcase ${2:condition}:\n\t\t${3:/* code for condition */}$0\n\t\tbreak;\n\tdefault:\n\t\t/* Default Code */\n}\n",
+		"description": "Switch Case"
+	},
+	"case": {
+		"prefix": "case",
+		"body": "case ${1:condition}:\n\t${2:/* code for condition */}$0\n\tbreak;\n",
+		"description": "Case"
+	},
+	"try": {
+		"prefix": "try",
+		"body": "try\n{\n\t${1:/* code for Try */}$0\n}\ncatch (exception e)\n{\n\t/* code for Catch */\n}\n",
+		"description": "Try Catch"
+	},
+	"map": {
+		"prefix": "map",
+		"body": "std::map<${1:key}, ${2:value}> ${3:map};\n",
+		"description": "std::map"
+	},
+	"string": {
+		"prefix": "str",
+		"body": "std::string",
+		"description": "std::string"
+	},
+	"vector": {
+		"prefix": "vect",
+		"body": "std::vector<${1:char}> ${2:v};\n",
+		"description": "std::vector"
+	},
+	"template": {
+		"prefix": "temp",
+		"body": "template <typename ${1:_InputIter}>",
+		"description": "template <typename …>"
+	},
+	"ros::init": {
+		"prefix": "ros::init",
+		"body": "ros::init(argc, argv, \"${1:node_name}\");\n",
+		"description": "ros::init()"
+	},
+	"ros::Publisher": {
+		"prefix": "ros::pub",
+		"body": "ros::Publisher ${1:pub} = ${2:nh}.advertise<${3:std_msgs::String}>(\"${4:topic_name}\", ${5:1000});\n",
+		"description": "ros::Publisher"
+	},
+	"ros::Subscriber": {
+		"prefix": "ros::sub",
+		"body": "ros::Subscriber ${1:sub} = ${2:nh}.subscribe(\"${3:topic_name}\", ${4:1000}, ${5:subCallback});\n",
+		"description": "ros::Subscriber"
+	},
+	"ros while": {
+		"prefix": "roswhile",
+		"body": "ros::Rate loop_rate(${1:10});\nwhile (ros::ok())\n{\n\t${2:/* code for loop body */}$0\n\n\tros::spinOnce();\n\tloop_rate.sleep();\n}\n",
+		"description": "ros::Rate … while"
+	}
+}

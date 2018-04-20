@@ -1,0 +1,33 @@
+{
+	"name": "ros",
+	"version": "0.1.0",
+	"publisher": "roboware",
+	"engines": { "vscode": "*" },
+	"scripts": {
+		"update-grammar": "node ../../build/npm/update-grammar.js ros/language-msg grammars/msg.cson ./syntaxes/msg.json grammars/srv.cson ./syntaxes/srv.json"
+	},
+	"contributes": {
+		"languages": [{
+			"id": "msg",
+			"extensions": [ ".msg" ],
+			"aliases": [ "MSG", "msg" ],
+			"configuration": "./language-configuration.json"
+		},
+		{
+			"id": "srv&action",
+			"extensions": [ ".srv", ".action" ],
+			"aliases": [ "SRV&ACTION", "srv&action" ],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+			"language": "msg",
+			"scopeName": "source.msg",
+			"path": "./syntaxes/msg.json"
+		},
+		{
+			"language": "srv&action",
+			"scopeName": "source.srv",
+			"path": "./syntaxes/srv.json"
+		}]
+	}
+}

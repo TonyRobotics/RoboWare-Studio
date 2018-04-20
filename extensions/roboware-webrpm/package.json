@@ -1,0 +1,50 @@
+{
+  "name": "roboware-webrpm",
+  "displayName": "roboware-webrpm",
+  "publisher": "tulayang",
+  "version": "0.3.3",
+  "description": "RoboWare webrpm",
+  "main": "out/webrpm",
+  "engines": {
+    "vscode": "^1.0.3"
+  },
+  "author": "Wang Tong",
+  "private": true,
+  "scripts": {
+    "install:I": "NPM_I_INIT=1 scripts/npm.js",
+    "install:i": "scripts/npm.js",
+    "install:r": "NPM_I_RELEASE=1 scripts/npm.js",
+    "install:Ir": "NPM_I_INIT=1 NPM_I_RELEASE=1 scripts/npm.js",
+    "debug": "electron dist/main/electron-main",
+    "watch": "gulp watch",
+    "build-robokit": "gulp build",
+    "build-collector": "cd proc/collector && nim compile collector.nims",
+    "build": "gulp build && npm run build-collector"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.4.30",
+    "@types/node": "^6.0.53",
+    "electron": "^1.4.14",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-stylus": "^2.6.0",
+    "gulp-typescript": "^3.1.4",
+    "moca": "^0.2.2",
+    "ts-loader": "^1.3.3",
+    "typescript": "^2.1.5",
+    "vscode": "^1.0.3",
+    "webpack": "^1.14.0",
+    "webpack-stream": "^3.2.0"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.view.rpmweb",
+        "title": "Package rpmweb"
+      }
+    ]
+  }
+}

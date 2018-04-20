@@ -1,0 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Jinan Tony Robotics Co., Ltd. All rights reserved.
+ *  Author: Sun Liang
+ *--------------------------------------------------------------------------------------------*/
+
+/* Activity Bar */
+.monaco-workbench > .activitybar .monaco-action-bar .action-label.ros {
+	-webkit-mask: url('ros.svg') no-repeat 50% 50%;
+}

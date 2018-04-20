@@ -1,0 +1,36 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Jinan Tony Robotics Co., Ltd. All rights reserved.
+ *  Author: Wang Tong
+ *--------------------------------------------------------------------------------------------*/
+
+/* --- community viewlet --- */
+
+.viewlet-community {
+	height: 100%;
+	overflow-y: hidden;
+	padding: 1px 0 0 0;
+}
+
+.viewlet-community-login {
+	padding: 10px 20px;
+}
+
+.viewlet-community-login input, .viewlet-community-login button {
+	display: block;
+	line-height: 28px;
+	margin-bottom: 10px;
+	width: 100%;
+	border: none;
+}
+
+.viewlet-community-space {
+	margin: 0 20px 20px;
+}
+
+.viewlet-community-username {
+	font-weight: bold;
+}
+
+.viewlet-community-login.viewlet-community-login--authing input {
+
+}

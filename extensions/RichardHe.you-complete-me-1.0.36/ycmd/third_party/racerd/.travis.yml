@@ -1,0 +1,13 @@
+language: rust
+sudo: false
+
+before_install:
+  - export RUST_SRC_PATH=$(scripts/download_rust_source.sh)
+
+rust:
+  - stable
+  - beta
+
+script:
+  - cargo test
+  - scripts/assert_cargo_lock_unchanged

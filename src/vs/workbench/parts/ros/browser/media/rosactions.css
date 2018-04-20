@@ -1,0 +1,22 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Jinan Tony Robotics Co., Ltd. All rights reserved.
+ *  Author: Sun Liang
+ *--------------------------------------------------------------------------------------------*/
+
+.monaco-workbench .ros-action.refresh-ros {
+	background: url('Refresh.svg') center center no-repeat;
+}
+
+.vs-dark .monaco-workbench .ros-action.refresh-ros,
+.hc-black .monaco-workbench .ros-action.refresh-ros {
+	background: url('Refresh_inverse.svg') center center no-repeat;
+}
+
+.monaco-workbench .ros-action.record-ros {
+	background: url('Record.svg') center center no-repeat;
+}
+
+.vs-dark .monaco-workbench .ros-action.record-ros,
+.hc-black .monaco-workbench .ros-action.record-ros {
+	background: url('Record_inverse.svg') center center no-repeat;
+}

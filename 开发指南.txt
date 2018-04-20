@@ -1,0 +1,87 @@
+RoboWare Studio 开发指南
+
+开发者可参照本文档进行所需功能的开发。
+
+RoboWare Studio 基于 Visual Studio Code 的源代码进行二次开发，最新版本是 RoboWare Studio 1.2.0 基于 vscode 1.15.1。由于 RoboWare Studio 与 ROS 功能紧密结合，所以它只有 Linux deb 版本的，只能在 ubuntu 14.04 或更高版本的系统上进行开发，也只能在装有 ROS 的 ubuntu 系统上运行。
+
+RoboWare Studio 建议的开发环境：
+系统环境：Ubuntu Linux Desktop v14.04 64bit，或更高版本
+ROS环境：ROS 1，indigo，或更高版本
+集成开发环境：vscode
+nodejs：v7.4.0，或更高版本
+electron：v1.6.6，或更高版本
+
+RoboWare Studio 在 vscode 的基础上已增加了哪些功能？
+
+1、检查打开目录的结构，保证打开的目录是一个合法的 ROS workspace，而普通的目录不予打开。
+2、修改“new workspace”功能，使之在创建目录完成以后调用 ROS 的 catkin_init_workspace 命令初始化工作区。
+3、分析打开的 ROS workspace 目录结构，在 explorer 的右键上下文菜单中对不同的目录和文件显示不同的功能，并一一实现新增的功能。
+4、在 explorer 面板顶端增加任务选择列表，作为编译和部署选项。
+5、在 explorer 面板底部增加 ROS 节点列表，用于显示编译出的 C++ ROS 节点文件。
+6、在左侧新增一个 ROS 面板，用于显示一些 ROS 环境的信息，包括：Active Topic，Active Nodes，Active Services，Installed Packages，Installed Messages，Installed Services 六个列表。
+7、在左侧新增一个 ROS Packages Manager 面板，用于管理 ROS 的官方软件包。
+8、Edit 菜单增加 vim 编辑模式的切换菜单项。
+9、增加 ROS 菜单，内有一些调用 ROS 命令的菜单项。
+10、ROS message、service、action 文件的语法提示。
+11、集成了 python 语法服务和调试插件、C++ 语法服务、CMake 语法提示、vim 编辑模式、C++ 调试器及远程调试插件。
+
+对 vscode 的源代码做了哪些修改？
+
+功能1：检查打开的目录结构
+参考位置：/src/vs/code/electron-main/windows.ts：498
+代码说明：检查要打开的路径是否是一个合法的 ROS workspace，检查的依据就是目录中应包含 /src/CMakeLists.txt 符号链接。如果不包含这个符号链接就会弹出提示框，终止打开路径。接下来在目录中检查是否存在 .vscode 目录，如果没有则会创建，并且将所有必要的预配置文件都写入目录中。
+
+功能2：创建新的 ROS workspace
+参考位置：/src/vs/workbench/parts/files/browser/fileActions.ts：2094
+代码说明：调用 service 的功能：/src/vs/workbench/services/ros/electron-browser/rosService.ts：26。打开文件对话框，创建目录，调用 ROS 命令初始化新的 ROS workspace，最后打开这个目录，切换到新的目录中。
+
+功能3：分析 ROS workspace 的目录结构，在不同层级和文件类型上加入不同的上下文菜单
+参考位置：/src/vs/workbench/parts/files/browser/fileActions.contribution.ts：63
+代码说明：在 stat 常量中可以获取到 explorer 树形控件中选中项的所有属性，stat.name 是目录项名，stat.isDirectory 指示是否是目录，stat.hasChild() 检查是否包含子目录项。用这些属性可以判断出不同文件的不同分支，在对应的分支中把对应的 Action 实例放入 actions 数组，即可为不同文件插入不同的菜单项。
+目前实现的 explorer 上下文菜单功能非常多，这些功能都在 /src/vs/workbench/parts/files/browser/fileActions.ts 中实现，以下是插入到右键菜单中的 Action 类名：
+AddRosPkgAction, ActivateRosPkgAction, DisactivateRosPkgAction, ActivateAllRosPkgAction, AddIncludeFolderAction, AddSrcFolderAction, AddMsgFolderAction, AddSrvFolderAction, AddActionFolderAction, AddLaunchFolderAction, AddCfgFolderAction, AddCppNodeAction, AddPythonNodeAction, AddCppClassAction, EditRosPkgDepAction, AddHeaderFileAction, AddCppFileAction, AddPyFileAction, AddMsgFileAction, AddSrvFileAction, AddActionFileAction, AddLaunchFileAction, AddCfgFileAction, RunLaunchFileAction, RunRemoteLaunchFileAction, PlayBagFileAction, LoopPlayBagFileAction
+
+功能4：explorer 标题栏上的任务选择列表
+参考位置：/src/vs/workbench/parts/files/browser/explorerViewlet.ts：97
+代码说明：在 explorer 的标题栏上增加了4个控件，方便快速地进行部署和编译，它们对应的 action 类：运行任务按钮：RunBuildTaskAction，任务列表：RunTaskActionItem，配置任务按钮：ConfigureTaskAction，配置远程任务参数按钮：ConfigureRemoteTaskAction。
+
+功能5：explorer 面板底部的 ROS 节点列表
+参考位置：/src/vs/workbench/parts/files/browser/views/rosNodeView.ts
+代码说明：ROS 节点列表的 view 类(RosNodeView)实际上是一个 ExplorerView 类的精简版，只用于查看编译出来的 C++ ROS 节点文件。类里重新实现了 FileRenderer 用于显示 ROS 节点的图标，重新实现了 FileFilter 用于过滤编译出来的无关文件，另外重新实现的还有 FileController, ActionProvider, FileAccessibilityProvider 都在 /src/vs/workbench/parts/files/browser/views/rosNodeViewer.ts 中。
+重新实现的 RosNodeView 类在此处被调用 /src/vs/workbench/parts/files/browser/explorerViewlet.ts：49。显示在 explorerView 控件的下方。
+
+功能6：ROS 环境信息面板
+参考位置：/src/vs/workbench/parts/ros/browser/rosViewlet.ts
+代码说明：RosViewlet 是 ROS 环境信息面板的 Viewlet 类，其中包含了6个类似的 View 对象(rosTopicView, rosNodeView, rosServiceView, rosPackView, rosMsgView, rosSrvView)，用于显示不同的列表。这6个对象的共同基类 RosListView 在这里实现 /src/vs/workbench/parts/ros/browser/views/rosListView.ts。其功能是获取指定的 ROS 命令的执行结果，并且把结果用列表展示出来。
+
+功能7：ROS Packages Manager 面板
+参考位置：/src/vs/rw/rpm/browser/viewlet.ts
+代码说明：该模块从系统目录中获取已安装的 ROS 官方包，显示在列表中。未安装的包可执行"sudo apt-get install xxx"命令进行安装，已安装的包可执行"sudo apt-get remove xxx"命令进行卸载。
+
+功能8：切换 vim 编辑模式
+参考位置：/src/vs/workbench/parts/extensions/browser/extensionsActions.ts：1296
+代码说明：RoboWare Studio 采用了"vscodevim.vim" extension 实现了 vim 编辑模式，加载这个扩展即可打开 vim 模式，ToggleVimAction 类只是实现了是否加载"vscodevim.vim"的即时切换，当然，切换以后还需要重新加载整个窗口。
+
+功能9：ROS 功能菜单
+参考位置：/src/vs/code/electron-main/menus.ts：884
+代码说明：ROS 有一些专用的工具，都可以用菜单打开，添加菜单的方法可依照 vscode 的代码。而 ROS 菜单功能的实现大部分都实现在 /src/vs/workbench/parts/ros/browser/rosActions.ts 中。包括一些调用 ROS 命令的功能，和打开 ROS 相关配置文件的功能。
+
+功能10：ROS 文件语法高亮
+参考位置：/extensions/ros
+代码说明：RoboWare Studio 实现了一些简单的 ROS message、service、action 文件语法高亮，实现的方法就是采用了 vscode 的语言扩展功能。在 /extensions/ros 目录中的就是该扩展的语法配置文件，详情请参考 vscode 的官方文档。
+
+功能11：集成第三方扩展
+参考位置：/extensions
+代码说明：RoboWare Studio 去除了一些 vscode 中集成的扩展，也增加了一些第三方扩展，这些扩展都存放在 /extensions 目录中。内容包括：
+python 语法及调试扩展：donjayamanne.python-0.6.9
+C++ 语法自动完成扩展：RichardHe.you-complete-me-1.0.36
+CMake 语法高亮扩展：twxs.cmake-0.0.17
+vim 编辑模式扩展：vscodevim.vim-0.9.0
+gdb 调试器支持扩展：webfreak.debug-0.21.2
+C++ 代码格式化扩展：xaver.clang-format-1.5.0
+注意：在代码中修复了 webfreak.debug 扩展中的一个问题，参考：/extensions/webfreak.debug-0.21.2/out/src/backend/mi2/mi2.js：154，在此增加了关键的一行，这样可以保证在远程调试时是用登录模式执行 gdb 命令，如果不加入这一行将无法在远程主机上获取到 ROS 环境变量。
+
+另外 RoboWare Studio 对 vscode 做了一些针对 ROS 开发者使用习惯上的修改，在此不进行详细描述。开发者可以对比与 vscode 代码的不同之处。
+
+济南汤尼机器人科技有限公司
+

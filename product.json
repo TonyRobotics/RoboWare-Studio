@@ -1,0 +1,29 @@
+{
+	"nameShort": "RoboWare Studio",
+	"nameLong": "RoboWare Studio",
+	"applicationName": "roboware-studio",
+	"dataFolderName": ".roboware-studio",
+	"win32MutexName": "robowarestudio",
+	"licenseName": "TR",
+	"licenseUrl": "http://www.roboware.me/#/aboutInfo?activeNo=4",
+	"win32DirName": "TR RoboWare Studio",
+	"win32NameVersion": "TR RoboWare Studio",
+	"win32RegValueName": "TRRoboWareStudio",
+	"win32AppId": "{{CCE1A4C6-4852-4BA5-93F9-D6D4BE718212}",
+	"win32AppUserModelId": "TR.RoboWareStudio",
+	"win32ShellNameShort": "R&oboWare - Studio",
+	"darwinBundleIdentifier": "com.tonyrobotics.roboware.studio",
+	"reportIssueUrl": "https://github.com/tonyrobotics/RoboWare/issues/new",
+	"urlProtocol": "code-oss",
+	"privacyStatementUrl": "http://www.roboware.me/#/aboutInfo?activeNo=3",
+	"requestFeatureUrl": "https://github.com/tonyrobotics/RoboWare/issues?q=is:open is:issue label:feature-request sort:reactions-+1-desc",
+	"twitterUrl": "https://twitter.com/Tony_RoboWare",
+	"welcomePage": "http://www.roboware.me/",
+	"downloadUrl": "http://www.roboware.me/",
+	"updateUrl": "http://www.roboware.me",
+	"quality": "stable",
+	"sendASmile": {
+		"reportIssueUrl": "https://github.com/tonyrobotics/RoboWare/issues/new",
+		"requestFeatureUrl": "https://github.com/tonyrobotics/RoboWare/issues?q=is:open is:issue label:feature-request sort:reactions-+1-desc"
+	}
+}

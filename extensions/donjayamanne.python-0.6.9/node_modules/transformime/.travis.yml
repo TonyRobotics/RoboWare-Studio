@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- 4.2.2
+sudo: false
+env:
+  matrix:
+  - GROUP=
+  global:
+  - GH_REF: github.com/nteract/transformime.git
+  - secure: aLPJtdVJcG4qw/KKxD3+6h0pOtBToqAFvOaFwc5hu/FDUBPfsICsyp7zgNQ1lnfyxhvgZNF+RPfMdVBLGwtrOin9saDmdmVWMZQ9IHx+5DtKK9FwsIA28r05WOZ+QPhXiD4cmnGPa8jeZ1WUwmxkSHqYWmL/ox+51BYmBCr6YwTTobdvTqVXSrR2lDZNcga8ZMlCDfrErK1iW1LpvVOICxL/uJO1svkSFg3/0LvZS0nsVc/ybE6emcxakoLlZ/hv0ZdRNG0uZp7TZTSzUiACfSghByKOe1bmNHfr69zL8D2lZmzOjmhQt4y/BXgpF1dqB/m/5XQGkogbWG/pdsNUYZ4gMpzhuFtTPX6AhJDfc5DysSKD5vsG62TPgVv1ZDQY/z3Ys0TcAMLQToI/JxuZg/Loim8f2k/mZ3XohZNYenpBB7pVUpQNx0qx8kGF6/yc8U+55QQeo8sREn4x3wkdg/liyqaulrAfirjOyhSOmLTfetkCnlntLJIYoG4cbiwy1M5w9RPOqhzYaQWcf+kuWb4tLu3p+EP5PArhntv+Lpqp15T8mnC/2Q+o2Svbkl2Sg1uRHuvh4n9g5rg4+dHIuZp9WH9gp7JkmlDek5q/dSO87U2liFu7R4Xtuvgg4edbUssDcT3AatVZqpTMLdOoqFAm3Bd7KuaZQYC9sVr1Yxk=
+install:
+- npm install
+- npm run build
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+after_success:
+- bash ./scripts/travis_after_success.sh

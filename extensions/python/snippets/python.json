@@ -1,0 +1,92 @@
+{
+	"py": {
+		"prefix": "py",
+		"body": [
+			"#!/usr/bin/env python\n"
+		],
+		"description": "#!/usr/bin/env python"
+	},
+	"py3": {
+		"prefix": "py3",
+		"body": [
+			"#!/usr/bin/env python3\n"
+		],
+		"description": "#!/usr/bin/env python3"
+	},
+	"ase": {
+		"prefix": "ase",
+		"body": [
+			"self.assertEqual(${1:expected}, ${2:actual}${3:, '${4:message}'})$0"
+		],
+		"description": "Assert Equal"
+	},
+	"asne": {
+		"prefix": "asne",
+		"body": [
+			"self.assertNotEqual(${1:expected}, ${2:actual}${3:, '${4:message}'})$0"
+		],
+		"description": "Assert Not Equal"
+	},
+	"asr": {
+		"prefix": "asr",
+		"body": [
+			"self.assertRaises(${1:exception}, ${2:callable})$0"
+		],
+		"description": "Assert Raises"
+	},
+	"as": {
+		"prefix": "as",
+		"body": [
+			"self.assert_(${1:boolean expression}${2:, '${3:message}'})$0"
+		],
+		"description": "Assert"
+	},
+	"fail": {
+		"prefix": "fail",
+		"body": [
+			"self.fail('${1:message}')$0"
+		],
+		"description": "Fail (a test)"
+	},
+	"prop": {
+		"prefix": "prop",
+		"body": [
+			"@property\ndef ${1:name}(self):\n\t\"${2:The $1 property.}\"\n\t${3:return self._$1}\n\n${4:@$1.setter\ndef $1(self, value):\n\tself._$1 = value}\n\n${5:@$1.deleter\ndef $1(self):\n\tdel self._$1}$0"
+		],
+		"description": "New Property"
+	},
+	"ifmain": {
+		"prefix": "ifmain",
+		"body": [
+			"if __name__ == '__main__':\n\t${1:main()}$0"
+		],
+		"description": "if __name__ == '__main__'"
+	},
+	".": {
+		"prefix": ".",
+		"body": [
+			"self"
+		],
+		"description": "self"
+	},
+	"rospy.init_node": {
+		"prefix": "ros.init",
+		"body": "rospy.init_node(\"${1:node_name}\", anonymous=True)\n",
+		"description": "rospy.init_node()"
+	},
+	"rospy.Publisher": {
+		"prefix": "ros.pub",
+		"body": "${1:pub} = rospy.Publisher(\"${2:topic_name}\", ${3:String}, queue_size=${4:10})\n",
+		"description": "rospy.Publisher()"
+	},
+	"rospy.Subscriber": {
+		"prefix": "ros.sub",
+		"body": "rospy.Subscriber(\"${1:topic_name}\", ${2:String}, ${3:callback})\n",
+		"description": "rospy.Subscriber()"
+	},
+	"ros while": {
+		"prefix": "roswhile",
+		"body": "rate = rospy.Rate(${1:10})\nwhile not rospy.is_shutdown():\n\t${2:# code for loop body}$0\n\trate.sleep()\n",
+		"description": "rospy.Rate … while"
+	}
+}

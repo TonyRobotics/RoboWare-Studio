@@ -1,0 +1,164 @@
+{
+	"iconDefinitions": {
+		"_folder_dark": {
+			"iconPath": "./images/Folder_16x_inverse.svg"
+		},
+		"_folder_open_dark": {
+			"iconPath": "./images/FolderOpen_16x_inverse.svg"
+		},
+		"_file_dark": {
+			"iconPath": "./images/Document_16x_inverse.svg"
+		},
+		"_action_dark": {
+			"iconPath": "./images/Action_16x_inverse.svg"
+		},
+		"_cmake_dark": {
+			"iconPath": "./images/Cmake_16x_inverse.svg"
+		},
+		"_config_dark": {
+			"iconPath": "./images/Config_16x_inverse.svg"
+		},
+		"_cpp_dark": {
+			"iconPath": "./images/Cpp_16x_inverse.svg"
+		},
+		"_header_dark": {
+			"iconPath": "./images/Header_16x_inverse.svg"
+		},
+		"_launch_dark": {
+			"iconPath": "./images/Launch_16x_inverse.svg"
+		},
+		"_message_dark": {
+			"iconPath": "./images/Message_16x_inverse.svg"
+		},
+		"_node_dark": {
+			"iconPath": "./images/Node_16x_inverse.svg"
+		},
+		"_package_dark": {
+			"iconPath": "./images/Package_16x_inverse.svg"
+		},
+		"_python_dark": {
+			"iconPath": "./images/Python_16x_inverse.svg"
+		},
+		"_service_dark": {
+			"iconPath": "./images/Service_16x_inverse.svg"
+		},
+		"_yaml_dark": {
+			"iconPath": "./images/Yaml_16x_inverse.svg"
+		},
+		"_rosbag_dark": {
+			"iconPath": "./images/Rosbag_16x_inverse.svg"
+		},
+		"_folder_light": {
+			"iconPath": "./images/Folder_16x.svg"
+		},
+		"_folder_open_light": {
+			"iconPath": "./images/FolderOpen_16x.svg"
+		},
+		"_file_light": {
+			"iconPath": "./images/Document_16x.svg"
+		},
+		"_action_light": {
+			"iconPath": "./images/Action_16x.svg"
+		},
+		"_cmake_light": {
+			"iconPath": "./images/Cmake_16x.svg"
+		},
+		"_config_light": {
+			"iconPath": "./images/Config_16x.svg"
+		},
+		"_cpp_light": {
+			"iconPath": "./images/Cpp_16x.svg"
+		},
+		"_header_light": {
+			"iconPath": "./images/Header_16x.svg"
+		},
+		"_launch_light": {
+			"iconPath": "./images/Launch_16x.svg"
+		},
+		"_message_light": {
+			"iconPath": "./images/Message_16x.svg"
+		},
+		"_node_light": {
+			"iconPath": "./images/Node_16x.svg"
+		},
+		"_package_light": {
+			"iconPath": "./images/Package_16x.svg"
+		},
+		"_python_light": {
+			"iconPath": "./images/Python_16x.svg"
+		},
+		"_service_light": {
+			"iconPath": "./images/Service_16x.svg"
+		},
+		"_yaml_light": {
+			"iconPath": "./images/Yaml_16x.svg"
+		},
+		"_rosbag_light": {
+			"iconPath": "./images/Rosbag_16x.svg"
+		}
+	},
+
+	"folderExpanded": "_folder_open_dark",
+	"folder": "_folder_dark",
+	"file": "_file_dark",
+	"folderNamesExpanded": {
+		"rospackage": "_package_dark"
+	},
+	"folderNames": {
+		"rospackage": "_package_dark"
+	},
+	"fileExtensions": {
+		"action": "_action_dark",
+		"cc": "_cpp_dark",
+		"cpp": "_cpp_dark",
+		"h": "_header_dark",
+		"launch": "_launch_dark",
+		"msg": "_message_dark",
+		"py": "_python_dark",
+		"srv": "_service_dark",
+		"yaml": "_yaml_dark",
+		"bag": "_rosbag_dark"
+	},
+	"fileNames": {
+		"cmakelists.txt": "_cmake_dark",
+		"package.xml": "_config_dark",
+		"rosnode": "_node_dark"
+	},
+	"languageIds": {
+		// icons by language id
+	},
+	"light": {
+		"folderExpanded": "_folder_open_light",
+		"folder": "_folder_light",
+		"file": "_file_light",
+		"folderNamesExpanded": {
+			"rospackage": "_package_light"
+		},
+		"folderNames": {
+			"rospackage": "_package_light"
+		},
+		"fileExtensions": {
+			"action": "_action_light",
+			"cc": "_cpp_light",
+			"cpp": "_cpp_light",
+			"h": "_header_light",
+			"launch": "_launch_light",
+			"msg": "_message_light",
+			"py": "_python_light",
+			"srv": "_service_light",
+			"yaml": "_yaml_light",
+			"bag": "_rosbag_light"
+		},
+		"fileNames": {
+			"cmakelists.txt": "_cmake_light",
+			"package.xml": "_config_light",
+			"rosnode": "_node_light"
+		},
+		"languageIds": {
+			// icons by language id
+		}
+	},
+	"highContrast": {
+		// overrides for high contrast
+	}
+}

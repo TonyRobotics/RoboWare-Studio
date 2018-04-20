@@ -1,0 +1,38 @@
+[package]
+name = "libracerd"
+version = "0.1.0"
+authors = ["Joe Wilm <joe@jwilm.com>"]
+
+[dependencies]
+docopt = "0.6"
+rustc-serialize = "0.3"
+router = "0.1.0"
+persistent = "0.0.9"
+log = "0.3"
+rand = "0.3"
+env_logger = "0.3"
+racer = "1.1"
+
+[dependencies.logger]
+git = "https://github.com/iron/logger.git"
+rev = "78c20cbda030a03107fec91b5282183d6eee9997"
+
+[dependencies.bodyparser]
+git = "https://github.com/iron/body-parser"
+rev = "f9929111bd2efe7c29b519a5aa2d7bc32fddfac0"
+
+[dependencies.hyper]
+version = "0.7"
+default-features = false
+
+[dependencies.iron]
+version = "0.2"
+default-features = false
+
+[dependencies.iron-hmac]
+git = "https://github.com/jwilm/iron-hmac"
+rev = "fc4ac65a6036201f49dccb44380082830e91dd7e"
+features = ["hmac-rust-crypto"]
+
+[dev-dependencies]
+rust-crypto = "0.2.34"

@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "Ycm": "https://raw.githubusercontent.com/richard1122/vscode-youcompleteme/d44ddbc77f7b5af5ed906c28a6ea5f4a17970674/typings/ycm.d.ts"
+  }
+}

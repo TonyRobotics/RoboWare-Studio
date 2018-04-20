@@ -1,0 +1,22 @@
+{
+	"scopeName": "source.srv",
+	"fileTypes": [
+		"srv",
+		"action"
+	],
+	"firstLineMatch": "(?i)-\\*-[^*]*(Mode:\\s*)?C\\+\\+(\\s*;.*?)?\\s*-\\*-",
+	"name": "SRV&ACTION",
+	"patterns": [
+		{
+			"include": "#special_block"
+		},
+		{
+			"include": "source.msg"
+		},
+		{
+			"match": "\\B---\\B",
+			"name": "keyword.control.srv"
+		}
+	],
+	"version": "https://github.com/atom/language-c/commit/7922a226b706d3125601561ed670eed97c4d674b"
+}

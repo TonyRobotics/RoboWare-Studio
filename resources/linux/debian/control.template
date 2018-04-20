@@ -1,0 +1,18 @@
+Package: @@NAME@@
+Version: @@VERSION@@
+Section: devel
+Depends: libnotify4, libnss3, gnupg, apt, libxkbfile1, libgconf-2-4
+Priority: optional
+Architecture: @@ARCHITECTURE@@
+Maintainer: Jinan Tony <info@tonyrobotics.com>
+Homepage: https://www.tonyrobotics.com/
+Installed-Size: @@INSTALLEDSIZE@@
+Provides: tr-@@NAME@@
+Conflicts: tr-@@NAME@@
+Replaces: tr-@@NAME@@
+Description: IDE for ROS(Robot Operating System) developers.
+ RoboWare Studio is an IDE environment for ROS development.
+ It makes the ROS development visual, simple and manageable.
+ It provides ROS workspace management, code editing, building and debugging.
+ It is an IDE, but it will not be an IDE only.
+ See http://www.roboware.me/ Powered by Jinan Tony Robotics Co., Ltd.

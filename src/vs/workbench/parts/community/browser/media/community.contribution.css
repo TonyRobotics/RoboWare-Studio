@@ -1,0 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Jinan Tony Robotics Co., Ltd. All rights reserved.
+ *  Author: Wang Tong
+ *--------------------------------------------------------------------------------------------*/
+
+/* Activity Bar */
+.monaco-workbench > .activitybar .monaco-action-bar .action-label.community {
+	background-image: url('community.svg');
+}

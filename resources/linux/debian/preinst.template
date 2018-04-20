@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+# Do you like debian?
+db_settitle @@NAME@@/title || true
+db_input high @@NAME@@/EULA || true
+db_go
+
+# Check their answer.
+db_get @@NAME@@/EULA
+if [ "$RET" = "false" ]; then
+    db_unregister @@NAME@@/EULA
+    exit 1
+else
+    db_unregister @@NAME@@/EULA
+fi

@@ -1,0 +1,7 @@
+.vscode
+lib/tsconfig.json
+lib/*.ts
+lib/*.js.map
+typings
+tests
+gulpfile.js

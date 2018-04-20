@@ -1,0 +1,153 @@
+RoboWare Studio Development Guide
+
+
+Developers can refer to this document for the development of required functionality.
+
+
+RoboWare Studio is based on the source code of Visual Studio Code for secondary development. The latest version is RoboWare Studio 1.2.0 based on VSCode 1.15.1. Because RoboWare Studio is tightly integrated with ROS, it is only available in Linux deb and can only be developed on ubuntu 14.04 or higher version, and only on the Ubuntu system with ROS.
+
+
+The suggested development environment of RoboWare Studio is as follows:
+
+System environment: Ubuntu Linux Desktop v14.04 64bit, or higher.
+
+ROS environment: ROS indigo, or higher.
+
+Integrated development environment: VSCode.
+
+NodeJS: v7.4.0, or higher.
+
+Electron: v1.6.6, or higher.
+
+
+RoboWare Studio has added features on the basis of VSCode?
+
+
+1. Check the structure of the open directory to ensure that the open directory is a legitimate ROS workspace, while the normal directory cannot be openned.
+
+2. Modify the function of "new workspace" so that it can call the catkin_init_workspace command to initialize the workspace after the directory is created.
+
+3. Analyze the open ROS workspace directory structure, display different functions for different directories and files in the right context menu of explorer, and implement the new functions one by one.
+
+4. Add the task selection list at the top of the explorer panel as a compilation and deployment option.
+
+5. Add a list of ROS nodes at the bottom of the explorer panel to display the compiled C++ ROS node files.
+
+6. Add a ROS panel on the left to display some information about the ROS environment, including: Active Topic, Active Nodes, Active Services, Installed Packages, Installed Messages, Installed Services 6 lists.
+
+7. Add a ROS Packages Manager panel on the left to manage the ROS 'official software package.
+
+8. Edit menu to change menu item of vim Edit mode.
+
+9. Add the ROS menu with some menu items that call the ROS command.
+
+10. Syntax hints for ROS message, service and action files.
+
+11. Integrated python syntax service and debugging plug-in, C++ syntax service, CMake syntax prompt, vim edit mode, C++ debugger, and remote debugging plug-in.
+
+
+What changes have been made to the VSCode source code?
+
+
+Function 1: check the open directory structure.
+
+Reference position: /src/vs/code/electronic-main/window.ts: 498.
+
+Code description: check that the path to be opened is a valid ROS workspace, and the basis for the check is that the directory should contain the /src/cmakelists.txt symbol link. If the symbolic link is not included, the prompt box will pop up and the path will be terminated. Next, check if the .vscode directory exists in the directory, if not, and write all the necessary pre-configuration files into the directory.
+
+
+Function 2: create a new ROS workspace.
+
+Reference position: /src/vs/workbench/parts/files/browser/fileActions.ts: 2094
+
+Code description: call the function of the service: /src/vs/workbench/services/ros/electron-browser/rosService ts: 26. Open the file dialog box, create a directory, call the ROS command to initialize the new ROS workspace, and finally open the directory and switch to the new directory.
+
+
+Function 3: analyze the directory structure of ROS workspace and add different context menus to different levels and file types.
+
+Reference position: /src/vs/workbench/parts/files/browser/fileActions.contribution.ts: 63
+
+Code description: in the stat constant, you can get all the properties of the selected item in the explorer tree control, stat.name is the directory entry name, stat.IsDirectory indicates whether it is a directory, stat.HasChild() checks whether subdirectory entries are included. These properties can be used to determine the different branches of different files. In the corresponding branch, the corresponding Action instance is put into the actions array, and different menu items can be inserted into different files.
+
+Currently the explorer context menu functions very much, these features are in /src/vs/workbench/parts/files/browser/fileActions.ts in implementation, the Action of the following is inserted into the right-click menu class name:
+
+AddRosPkgAction, ActivateRosPkgAction, DisactivateRosPkgAction, ActivateAllRosPkgAction, AddIncludeFolderAction, AddSrcFolderAction, AddMsgFolderAction, AddSrvFolderAction, AddActionFolderAction, AddLaunchFolderAction, AddCfgFolderAction, AddCppNodeAction, AddPythonNodeAction, AddCppClassAction, EditRosPkgDepAction, AddHeaderFileAction, AddCppFileAction, AddPyFileAction, AddMsgFileAction, AddSrvFileAction, AddActionFileAction, AddLaunchFileAction, AddCfgFileAction, RunLaunchFileAction, RunRemoteLaunchFileAction, PlayBagFileAction, LoopPlayBagFileAction
+
+
+Function 4: task selection list on explorer title bar.
+
+Reference position: /src/vs/workbench/parts/files/browser/explorerViewlet.ts: 97
+
+Code description: in the explorer added four controls on the title bar, convenient and quick deployment and compilation, their corresponding action class: run the task button: RunBuildTaskAction, task list: RunTaskActionItem, configuration tasks button: ConfigureTaskAction, configure the remote task parameters button: ConfigureRemoteTaskAction.
+
+
+Function 5: a list of ROS nodes at the bottom of the explorer panel.
+
+Reference position: /src/vs/workbench/parts/files/browser/views/rosNodeView.ts
+
+Code description: the view class (RosNodeView) of the ROS node list is actually a compact version of the ExplorerView class, which is only used to view the compiled C++ ROS node files. Class to implement the FileRenderer is used to display, ROS node reimplemented FileFilter used to filter the compiled file has nothing to do, in addition to implementation and FileController, ActionProvider, FileAccessibilityProvider in /src/vs/workbench/parts/files/browser/views/rosNodeViewer.ts.
+
+To implement RosNodeView class here is called /src/vs/workbench/parts/files/browser/explorerViewlet.ts: 49. Displayed below the explorerView control.
+
+
+Function 6: ROS environment information panel.
+
+Reference position: /src/vs/workbench/parts/ros/browser/rosViewlet.ts
+
+Code description: the RosViewlet is the Viewlet class of the ROS environment information panel, which contains 6 similar View objects (rosTopicView, rosNodeView, rosServiceView, rosPackView, rosMsgView, rosSrvView) to display different lists. This object of six common base class RosListView implementation here /src/vs/workbench/parts/ros/browser/views/RosListView.ts. The function is to get the execution result of the specified ROS command and display the results in a list.
+
+
+Function 7: ROS Packages Manager panel.
+
+Reference position: /src/vs/rw/rpm/browser/viewlet.ts
+
+Code description: this module retrieves the installed ROS official package from the system directory and displays it in the list. The uninstalled package can be installed with the "sudo apt-get install XXX "command, and the installed package can execute the "sudo apt-get remove XXX" command to unload.
+
+
+Function 8: switch vim editing mode.
+
+Reference position: /src/vs/workbench/parts/extensions/browser/extensionsActions.ts: 1296
+
+Code description: RoboWare Studio adopted "vscodevim vim" extension implements the vim editor mode, loading the extension can open mode of vim, ToggleVimAction class is only achieved if load "vscodevim. Vim" instant switch, of course, after the switch need to reload the entire window.
+
+
+Function 9: ROS function menu.
+
+Reference position: /src/vs/code/electronic-main/menus.ts: 884.
+
+Code description: ROS has some special tools, which can be opened by the menu. The method of adding menu can be according to the code of VSCode. And the realization of the function of ROS menu mostly implemented in /src/vs/workbench/parts/ROS/browser/rosActions.ts. Includes some functions to invoke the ROS command, and the ability to open the ROS related configuration file.
+
+
+Function 10: ROS file syntax highlighting.
+
+Reference position: /extensions/ros.
+
+Code description: RoboWare Studio implements some simple ROS message, service, action file syntax highlighting, and the implementation method is to use the language extension function of VSCode. In the /extensions/ros directory, this extension is a syntax-configuration file. For details, please refer to the official documentation of VSCode.
+
+
+Function 11: integrate third-party extensions.
+
+Reference position: /extensions.
+
+Code description: RoboWare Studio removes some of the extensions that are integrated in VSCode and adds some third-party extensions that are stored in the /extensions directory. The contents include:
+
+Python syntax and debugging extensions: donjayamanne.python-0.6.9
+
+C++ syntax autocomplete extension: RichardHe.you-complete-me-1.0.36
+
+CMake syntax highlighting: twxs.cmake-0.0.17
+
+Vim edit mode extension: vscodevim.vim-0.9.0
+
+GDB debugger support extension: webfreak.debug-0.21.2
+
+C++ code formatting extension: xaver.clang-format-1.5.0
+
+Note: in the code fixes webfreak. Debug extension problem of a reference: /extensions/webfreak.debug-0.21.2/out/src/backend/mi2/mi2.js: 154, in the increased key line, so that when the remote debugging GDB command is to use the login mode, if not to join this line will not be able to get on the remote host to ROS environment variables.
+
+
+In addition, RoboWare Studio has made some modifications to VSCode for the use of ROS developers, which is not described in detail here. Developers can compare the differences with the VSCode code.
+
+
+Jinan Tony Robotics Co., Ltd.
+

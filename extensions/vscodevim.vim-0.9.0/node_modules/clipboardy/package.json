@@ -1,0 +1,118 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "clipboardy@^1.1.4",
+        "scope": null,
+        "escapedName": "clipboardy",
+        "name": "clipboardy",
+        "rawSpec": "^1.1.4",
+        "spec": ">=1.1.4 <2.0.0",
+        "type": "range"
+      },
+      "/home/travis/build/VSCodeVim/Vim"
+    ]
+  ],
+  "_from": "clipboardy@>=1.1.4 <2.0.0",
+  "_id": "clipboardy@1.1.4",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/clipboardy",
+  "_nodeVersion": "7.9.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/clipboardy-1.1.4.tgz_1497939096300_0.10082469834014773"
+  },
+  "_npmUser": {
+    "name": "floatdrop",
+    "email": "floatdrop@gmail.com"
+  },
+  "_npmVersion": "4.2.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "clipboardy@^1.1.4",
+    "scope": null,
+    "escapedName": "clipboardy",
+    "name": "clipboardy",
+    "rawSpec": "^1.1.4",
+    "spec": ">=1.1.4 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/clipboardy/-/clipboardy-1.1.4.tgz",
+  "_shasum": "51b17574fc682588e2dd295cfa6e6aa109eab5ee",
+  "_shrinkwrap": null,
+  "_spec": "clipboardy@^1.1.4",
+  "_where": "/home/travis/build/VSCodeVim/Vim",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "bugs": {
+    "url": "https://github.com/sindresorhus/clipboardy/issues"
+  },
+  "dependencies": {
+    "execa": "^0.6.0"
+  },
+  "description": "Access the system clipboard (copy/paste)",
+  "devDependencies": {
+    "ava": "*",
+    "xo": "*"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "51b17574fc682588e2dd295cfa6e6aa109eab5ee",
+    "tarball": "https://registry.npmjs.org/clipboardy/-/clipboardy-1.1.4.tgz"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "fallbacks"
+  ],
+  "gitHead": "eebc9f53b8b78b051f9dc10d39b9ceec74bf12fd",
+  "homepage": "https://github.com/sindresorhus/clipboardy#readme",
+  "keywords": [
+    "clipboard",
+    "copy",
+    "paste",
+    "copy-paste",
+    "pasteboard",
+    "read",
+    "write",
+    "pbcopy",
+    "clip",
+    "xclip",
+    "xsel"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "floatdrop",
+      "email": "floatdrop@gmail.com"
+    },
+    {
+      "name": "sindresorhus",
+      "email": "sindresorhus@gmail.com"
+    }
+  ],
+  "name": "clipboardy",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindresorhus/clipboardy.git"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "version": "1.1.4",
+  "xo": {
+    "esnext": true
+  }
+}

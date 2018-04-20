@@ -1,0 +1,35 @@
+{
+	"scopeName": "source.msg",
+	"fileTypes": [
+		"msg"
+	],
+	"name": "MSG",
+	"patterns": [
+		{
+			"include": "#preprocessor-rule-enabled"
+		},
+		{
+			"include": "#preprocessor-rule-disabled"
+		},
+		{
+			"include": "#preprocessor-rule-other"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"match": "\\b(Header|bool|int8|uint8|int16|uint16|int32|uint32|int64|uint64|float32|float64|string|time|duration)\\b",
+			"name": "storage.type.msg"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#line_continuation_character"
+		}
+	],
+	"version": "https://github.com/atom/language-c/commit/3fe925ae573a67f67ef8cec4428939ae0997e81f"
+}

@@ -1,0 +1,103 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Jinan Tony Robotics Co., Ltd. All rights reserved.
+ *  Author: Wang Tong
+ *--------------------------------------------------------------------------------------------*/
+
+/* --- rpm viewlet --- */
+
+.viewlet-rpm-wrapper {
+	position: relative;
+	height: 100%;
+}
+.viewlet-rpm-wrapper .monaco-scrollable-element {
+	height: 100%;
+}
+
+.viewlet-rpm {
+	height: 100%;
+	padding: 0px 0 0 0;
+}
+.viewlet-rpm:hover {
+	overflow-y: auto;
+}
+.viewlet-rpm-box {
+	position: absolute!important;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.viewlet-rpm-header {
+	position: relative;
+}
+.viewlet-rpm-select {
+	position: absolute!important;
+	font-size: 14px;
+	top: 0;
+	left: 40px;
+	width: 120px;
+	height: 26px;
+	border: none;
+	background: var(--input-bgcolor);
+	color: var(--input-color);
+}
+.viewlet-rpm-input-wrapper {
+	padding: 0 20px 0 180px;
+}
+.viewlet-rpm-input-wrapper input {
+	font-size: 14px;
+	padding: 4px 0;
+	border: none;
+	width: 100%;
+	margin-bottom: 20px;
+	background-color: rgb(60,60,60);
+}
+body.vs .viewlet-rpm-input-wrapper input {
+	background-color: rgb(255, 255, 255);
+}
+.viewlet-rpm-list {
+	-webkit-padding-start: 0;
+	margin: 0;
+}
+.viewlet-rpm-item {
+	list-style: none outside none;
+	list-style-type: none;
+	overflow: hidden;
+	padding: 10px 20px;
+}
+.viewlet-rpm-item:hover {
+	cursor: pointer;
+	background-color: #046;
+}
+.viewlet-rpm-item img {
+	border-radius: 40px;
+	display: block;
+	float: left;
+}
+.viewlet-rpm-content {
+	margin-left: 20px;
+}
+.viewlet-rpm-item h3 {
+	line-height: 1;
+	margin: 0 0 10px 0;
+}
+.viewlet-rpm-install {
+	float: right;
+}
+.viewlet-rpm-install.install {
+	background-color: #073;
+	border: 1px solid #3A8;
+	color: #fff;
+}
+.viewlet-rpm-install.uninstall {
+	background-color: #733;
+	border: 1px solid #700;
+	color: #fff;
+}
+.viewlet-rpm-desc {
+	opacity: 0.6;
+}
+.viewlet-rpm-item.gray {
+	background-color: #046;
+}
+

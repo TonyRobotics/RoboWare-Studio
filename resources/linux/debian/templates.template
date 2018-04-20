@@ -1,0 +1,55 @@
+Template: @@NAME@@/title
+Type: title
+Description: End User License Agreement
+Description-zh_CN: 最终用户协议
+
+Template: @@NAME@@/EULA
+Type: boolean
+Description-en: Do you accept the agreement?
+              End User License Agreement (EULA) for RoboWare
+                     Last updated: September 15, 2017
+ Tony Robotics ("us", "we", or "our") operates the software RoboWare, including Designer, Studio and Viewer (the "Service").
+ This page informs you of our policies regarding the collection, use and disclosure of Personal Information when you use our Service.
+ We will not use or share your information with anyone except as described in this Privacy Policy.
+ We use your Log Data for improving the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.
+ .
+ 1. Log Data
+  We collect information that the Service sends whenever you use our Service ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, computer type, the usage of our Service, the time and date of your use, the time spent on the Service and other statistics.
+ .
+ 2. Service Providers
+  We may employ third party companies and individuals to facilitate our Service, to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.
+  These third parties have access to your Personal Information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+ .
+ 3. Security
+  The security of your Log Data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Log Data, we cannot guarantee its absolute security.
+ .
+ 4. Changes To This Privacy Policy
+  We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+  You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+ .
+ Contact Us
+ If you have any questions about these Terms, please contact info@tonyrobotics.com
+Description-zh_CN: 您是否接受上述协议?
+                       RoboWare软件最终用户许可协议
+                         最后更新: 2017年9月15日
+ Tony Robotics(以下称为“我们”)经营的软件RoboWare，包括Designer、Studio和Viewer(以下称为“服务”)。
+ 本页面告知您在使用我们的服务时有关收集、使用和披露个人信息的政策。
+ 我们将不会使用或分享您的信息，除了在本隐私政策中所述。
+ 我们使用您的日志数据来改进服务。通过使用该服务，您同意按照本策略收集和使用信息。除非本隐私政策另有规定，本隐私政策中使用的术语与我们的条款和条件具有相同的含义。
+ .
+ 1. 日志数据
+  当您使用我们的服务(“日志数据”)时，我们收集服务发送的信息。该日志数据可能包括诸如您的计算机的广域网协议(“IP”)地址、计算机类型、我们的服务的使用、您使用的时间和日期、用于服务的时间和其他统计信息等信息。
+ .
+ 2. 服务提供商
+  我们可以雇用第三方公司和个人来协助我们的服务，为我们提供服务，执行服务相关的服务，或协助我们分析我们的服务是如何使用的。
+  这些第三方只能在我们的名义下执行这些任务，并且有义务不披露或使用它。
+ .
+ 3. 安全
+  您的日志数据的安全性对我们很重要，但请记住，在广域网上没有任何传输方法，或者电子存储方法是100%安全的。虽然我们努力使用商业上可接受的方法来保护您的日志数据，但我们不能保证它的绝对安全性。
+ .
+ 4. 更改此隐私策略
+  我们可能会不时更新我们的隐私政策。我们将通过在本页上发布新的隐私政策通知您任何更改。
+  建议您定期查看此隐私策略，以作任何更改。这一隐私政策的改变是有效的，当他们被张贴在这一页上。
+ .
+ 联系我们
+ 如果您对这些术语有任何疑问，请与 info@tonyrobotics.com 联系

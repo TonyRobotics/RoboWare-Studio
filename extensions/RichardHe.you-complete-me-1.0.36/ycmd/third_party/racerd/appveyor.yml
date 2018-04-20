@@ -1,0 +1,29 @@
+environment:
+  matrix:
+    - TARGET: x86_64-pc-windows-msvc
+      VCVARS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\amd64\\vcvars64.bat"
+    - TARGET: i686-pc-windows-msvc
+      VCVARS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\vcvars32.bat"
+    - TARGET: i686-pc-windows-gnu
+
+install:
+  # Download and install rust compiler
+  - curl -O "https://static.rust-lang.org/dist/rust-1.5.0-%TARGET%.exe"
+  - rust-1.5.0-%TARGET% /SILENT /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
+  # Download and install rust source
+  - curl -O "https://static.rust-lang.org/dist/rustc-1.5.0-src.tar.gz"
+  - tar -xf rustc-1.5.0-src.tar.gz
+  - SET PATH=%PATH%;C:\Program Files (x86)\Rust\bin;C:\MinGW\bin
+  - rustc -Vv
+  - cargo -Vv
+  - SET RUST_SRC_PATH=%CD%\rustc-1.5.0\src
+  - if defined VCVARS call "%VCVARS%"
+
+build: false
+
+cache:
+  - 'target -> Cargo.lock'
+  - 'C:\Users\appveyor\.cargo -> Cargo.lock'
+
+test_script:
+  - cargo test --verbose

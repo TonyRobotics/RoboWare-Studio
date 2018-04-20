@@ -1,0 +1,51 @@
+language: python
+sudo: false
+
+matrix:
+  include:
+    # TOXENV specify under which environment tox should launch the tests
+    # https://testrun.org/tox/latest/
+    - python: 2.6
+      env: TOXENV=py26
+    - python: 2.7
+      env: TOXENV=py27
+    - python: 3.3
+      env: TOXENV=py33
+    - python: 2.6
+      env:
+        - TOXENV=py26
+        - CROSS_PYTHON_TESTS=true
+    - python: 2.7
+      env:
+        - TOXENV=py27
+        - CROSS_PYTHON_TESTS=true
+
+    - language: generic
+      os: osx
+      osx_image: xcode7
+      env: TOXENV=py26
+    - language: generic
+      os: osx
+      osx_image: xcode7
+      env: TOXENV=py27
+    - language: generic
+      os: osx
+      osx_image: xcode7
+      env:
+        - TOXENV=py26
+        - CROSS_PYTHON_TESTS=true
+    - language: generic
+      os: osx
+      osx_image: xcode7
+      env:
+        - TOXENV=py27
+        - CROSS_PYTHON_TESTS=true
+    - language: generic
+      os: osx
+      osx_image: xcode7
+      env: TOXENV=py33
+before_install: git submodule update --init --recursive
+install: ./travis/install.sh
+script: ./travis/run.sh
+notifications:
+  email: false
