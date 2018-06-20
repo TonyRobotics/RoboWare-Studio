@@ -4,7 +4,7 @@
 
 ## Development
 
-Please refer to the [Development Guide](DEVELOPMENT_GUIDE.txt) or [开发指南](开发指南.txt) for details.
+Please refer to the [Development Guide](DEVELOPMENT_GUIDE.txt) for details. 这里是中文版: [开发指南](开发指南.txt)
 
 ## License
 
